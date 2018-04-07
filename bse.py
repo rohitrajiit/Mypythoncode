@@ -2,7 +2,7 @@
 """
 Created on Sun Apr  1 23:28:18 2018
 
-@author: rohit
+@author: rohit raj
 downloads scripwise price volume data
 """
 import sys
