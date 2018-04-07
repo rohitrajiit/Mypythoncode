@@ -10,8 +10,14 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import os
+import json
 
-path = r'C:\Users\rohit\Downloads'
+path =r'C:\Users\rohit\AppData\Local\Google\Chrome\User Data\Default\Preferences'
+
+with open(path) as f:
+    pref = json.load(f)
+
+path = pref['savefile']['default_directory']
 
 driver = webdriver.Chrome()
 driver.get('https://www.bseindia.com/markets/equity/EQReports/StockPrcHistori.aspx?scripcode=512289&flag=sp&Submit=G')
