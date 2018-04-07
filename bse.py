@@ -21,12 +21,6 @@ def bse(stock = 'RCOM', fdate = '12/03/2018', tdate = '16/03/2018' ):
     
     path = pref['savefile']['default_directory']
     
-    
-    options = Options()
-    options.set_headless(headless=True)
-    #driver = webdriver.Chrome(chrome_options=options) download does not work in 
-    #headless mode due to bug
-    
     driver = webdriver.Chrome()
     driver.get('https://www.bseindia.com/markets/equity/EQReports/StockPrcHistori.aspx?scripcode=512289&flag=sp&Submit=G')
     try:
