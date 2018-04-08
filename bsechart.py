@@ -33,6 +33,8 @@ def makechart(scrip='532712'):
     plt.figure(1)
     plt.subplot(211)
     plt.plot(Dates,Price)
+    plt.title('Price')
     plt.subplot(212)
     plt.bar(Dates,Volume, width=0.1)
+    plt.title('Volume')
     plt.show()
