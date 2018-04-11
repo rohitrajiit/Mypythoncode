@@ -31,13 +31,15 @@ def makechart(scrip='532712'):
     Price = [float(x) for x in Price]
     Dates = [datetime.strptime(x,'%d-%B-%Y') for x in Dates]
     fig, ax1 = plt.subplots()
-    ax1.plot(Dates, Price, 'b-')
+    ax1.plot(Dates, Price, 'b-' , label = 'Price')
     ax1.set_xlabel('Dates')
     ax1.set_ylabel('Price', color='b')
     ax1.tick_params('y', colors='b')
     ax2 = ax1.twinx()
-    ax2.bar(Dates, Volume, width =0.5)
+    ax2.bar(Dates, Volume, width =0.5 , label = 'Volume')
     ax2.set_ylabel('Volume', color='r')
     ax2.tick_params('y', colors='r')
     fig.tight_layout()
+    ax1.legend(loc ='upper right')
+    ax2.legend(loc ='upper left')
     plt.show()
