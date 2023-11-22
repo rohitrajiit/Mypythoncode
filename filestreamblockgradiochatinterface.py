@@ -1,7 +1,7 @@
 import gradio as gr
 from openai import OpenAI
 
-api_key = "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"  # Replace with your key
+api_key = "sk-"  # Replace with your key
 
 with gr.Blocks() as demo:
     chatbot = gr.Chatbot()
