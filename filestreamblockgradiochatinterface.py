@@ -14,15 +14,14 @@ with gr.Blocks() as demo:
 
     def bot(msg, history,filename):
         history_openai_format = []
+        with open(filename, 'r') as file:
+            # Read the contents of the file
+            file_contents = file.read()
+            history_openai_format.append({"role": "user", "content": file_contents })
         for human, assistant in history:
             history_openai_format.append({"role": "user", "content": human })
             if assistant is not None:
                 history_openai_format.append({"role": "assistant", "content":assistant})
-        
-        with open(filename, 'r') as file:
-        # Read the contents of the file
-            file_contents = file.read()
-        history_openai_format.append({"role": "user", "content": file_contents })
         
         client = OpenAI(
         api_key=api_key,)
@@ -41,7 +40,6 @@ with gr.Blocks() as demo:
                 for character in text:
                         history[-1][1] += character
                         yield history
- 
 
     msg.submit(user, [msg, chatbot], [msg, chatbot], queue=False).then(
         bot, [msg, chatbot,filename], chatbot
