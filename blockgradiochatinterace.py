@@ -6,7 +6,7 @@ api_key = "sk-"  # Replace with your key
 with gr.Blocks() as demo:
     chatbot = gr.Chatbot()
     msg = gr.Textbox()
-    clear = gr.ClearButton([msg, chatbot])
+    clear = gr.Button("Clear")
 
     def respond(message, chat_history):
         history_openai_format = []
@@ -30,5 +30,6 @@ with gr.Blocks() as demo:
         return "", chat_history
 
     msg.submit(respond, [msg, chatbot], [msg, chatbot])
+    clear.click(lambda: None, None, chatbot, queue=False)
 
 demo.launch()
