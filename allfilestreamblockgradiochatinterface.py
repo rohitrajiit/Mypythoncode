@@ -3,8 +3,7 @@ from openai import OpenAI
 import docx2txt
 import PyPDF2
 
-
-api_key = "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"  # Replace with your key
+api_key = "sk-"  # Replace with your key
 
 def read_text_from_file(file_path):
     # Check the file type and read accordingly
@@ -44,10 +43,6 @@ with gr.Blocks() as demo:
             if assistant is not None:
                 history_openai_format.append({"role": "assistant", "content":assistant})
         
-        for files in filename:
-            file_contents = read_text_from_file(files)
-            history_openai_format.append({"role": "user", "content": file_contents })
-        
         client = OpenAI(
         api_key=api_key,)
         response = client.chat.completions.create(
@@ -65,7 +60,6 @@ with gr.Blocks() as demo:
                 for character in text:
                         history[-1][1] += character
                         yield history
- 
 
     msg.submit(user, [msg, chatbot], [msg, chatbot], queue=False).then(
         bot, [msg, chatbot,filename], chatbot
